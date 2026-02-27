@@ -1,4 +1,4 @@
-public class Member extends Person{
+public class Member extends Person implements Payable{
 
     private int membershipDuration;
     private double baseFee;
@@ -13,6 +13,8 @@ public class Member extends Person{
         return membershipDuration*baseFee;
     }
 
+    //this is not done!
+    @Override
     public double makePayment(){
         return 0.0;
     }
@@ -22,7 +24,3 @@ public class Member extends Person{
         return "Name: "+this.getName()+"id: "+this.getId()+"age: "+ this.getAge()+"Membership Duration: "+this.membershipDuration+"months ";
     }
 }
-//• Person
-//• Member
-//• PremiumMember
-//• Payable interface
