@@ -4,7 +4,7 @@ public abstract class Person {
     private String name;
     private int age;
 
-    public Person(String name,int id,int age){
+    public Person(int id,String name,int age){
         this.setName(name);
         this.id = id;
         this.setAge(age);
