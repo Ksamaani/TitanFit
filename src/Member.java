@@ -6,6 +6,7 @@ public class Member extends Person implements Payable{
     public Member (int id,String name,int age,int duration){
         super(id,name,age);
         this.membershipDuration = duration;
+        this.baseFee = 250;
     }
 
     @Override
@@ -13,10 +14,10 @@ public class Member extends Person implements Payable{
         return membershipDuration*baseFee;
     }
 
-    //this is not done!
+
     @Override
     public double makePayment(){
-        return 0.0;
+        return calculateFee();
     }
 
     @Override
