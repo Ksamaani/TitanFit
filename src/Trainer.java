@@ -4,8 +4,8 @@ private double monthelySalary;
 
 Trainer(int id,String name,int age,String spec,double month){
     super(id, name, age);
-    this.setSpecialization(spec);
-    this.setmonthelySalary(month);
+    this.specialization=spec;
+    this.monthelySalary=month;
 }
     @Override
 public double calculateFee(){
@@ -18,27 +18,6 @@ public double calculateFee(){
     }
 
     public String toString(){
-        return super.toString()+"Specialization in: "+getSpecialization();
+        return super.toString()+"Specialization in: "+specialization;
     }
-
-
-
-
-
- public String getSpecialization() {
-        return specialization;
-    }
-
-    public void setSpecialization(String spec) {
-        this.specialization = spec;
-    }
-    
-    public double getmonthelySalary() {
-        return monthelySalary;
-    }
-
-    public void setmonthelySalary(double month) {
-        this.monthelySalary = monthelySalary;
-    }
-
 }
