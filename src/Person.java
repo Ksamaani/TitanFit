@@ -12,6 +12,9 @@ public abstract class Person {
 
     public abstract double calculateFee();
 
+    public String toString(){
+        return "Name: "+this.getName()+"id: "+this.getId()+"age: "+ this.getAge();
+    }
     public int getId() {
         return id;
     }

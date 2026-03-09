@@ -22,6 +22,6 @@ public class Member extends Person implements Payable{
 
     @Override
     public String toString(){
-        return "Name: "+this.getName()+"id: "+this.getId()+"age: "+ this.getAge()+"Membership Duration: "+this.membershipDuration+"months ";
+        return super.toString()+"Membership Duration: "+this.membershipDuration+"months ";
     }
 }
