@@ -13,7 +13,7 @@ public abstract class Person {
     public abstract double calculateFee();
 
     public String toString(){
-        return "Name: "+this.getName()+"id: "+this.getId()+"age: "+ this.getAge();
+        return "Name: "+name+", Id: "+id+", Age: "+age+" ,";
     }
     public int getId() {
         return id;
