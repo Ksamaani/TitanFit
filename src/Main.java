@@ -36,9 +36,19 @@ public class Main {
 
             switch (choice) {
                 case 1:
-                    System.out.print("Enter Member ID: ");
-                    int mId = scanner.nextInt();
-                    scanner.nextLine();
+                    int mId;
+
+                    while (true) {
+                        System.out.print("Enter Member ID: ");
+                        mId = scanner.nextInt();
+                        scanner.nextLine();
+
+                        if (titanFit.searchMemberRecursive(mId, 0) == null) {
+                            break;
+                        }
+                        System.out.println("ERROR: ID is used, try again.");
+                    }
+
                     System.out.print("Enter Name: ");
                     String mName = scanner.nextLine();
                     System.out.print("Enter Age: ");
@@ -83,9 +93,19 @@ public class Main {
                     break;
 
                 case 2:
-                    System.out.print("Enter Trainer ID: ");
-                    int tId = scanner.nextInt();
-                    scanner.nextLine();
+                    int tId;
+
+                    while (true) {
+                        System.out.print("Enter Trainer ID: ");
+                        tId = scanner.nextInt();
+                        scanner.nextLine();
+
+                        if (titanFit.searchTrainerRecursive(tId, 0) == null) {
+                            break;
+                        }
+                        System.out.println("ERROR: ID is used, try again.");
+                    }
+
                     System.out.print("Enter Name: ");
                     String tName = scanner.nextLine();
                     System.out.print("Enter Age: ");
@@ -139,7 +159,7 @@ public class Main {
                     System.out.print("Enter Trainer ID to search: ");
                     int searchTId = scanner.nextInt();
                     
-                    Trainer foundT = titanFit.searchTrainerRecursivea(searchTId, 0);
+                    Trainer foundT = titanFit.searchTrainerRecursive(searchTId, 0);
                     if (foundT != null) {
                         System.out.println(foundT.toString());
                     } else {
@@ -211,7 +231,7 @@ public class Main {
                     
                     Person p = titanFit.searchMemberRecursive(payId, 0);
                     if (p == null) {
-                        p = titanFit.searchTrainerRecursivea(payId, 0);
+                        p = titanFit.searchTrainerRecursive(payId, 0);
                     }
                     
                     if (p != null) {
