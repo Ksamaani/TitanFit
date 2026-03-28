@@ -4,9 +4,6 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        int memberCount = 0;
-        int trainerCount = 0;
-
         System.out.println("==================================================");
         System.out.println("          Welcome to TitanFit Management          ");
         System.out.println("==================================================");
@@ -41,7 +38,7 @@ public class Main {
             switch (choice) {
                 case 1:
 
-                    if (memberCount == maxMembers) {
+                    if (titanFit.getMembersCount() == maxMembers) {
                         System.out.println("ERROR: Reached maximum amount of members");
                         break;
                     }
@@ -97,14 +94,13 @@ public class Main {
                     }
 
                     if (mAdded) {
-                        memberCount++;
                         System.out.println("Member added successfully!");
                     } else
                         System.out.println("Failed to add member.");
                     break;
 
                 case 2:
-                    if (trainerCount == maxTrainers) {
+                    if (titanFit.getTrainerCount() == maxTrainers) {
                         System.out.println("ERROR: Reached maximum amount of trainers");
                         break;
                     }
@@ -134,7 +130,6 @@ public class Main {
 
                     Trainer newTrainer = new Trainer(tId, tName, tAge, tSpec, tSalary);
                     if (titanFit.addTrainer(newTrainer)) {
-                        trainerCount++;
                         System.out.println("Trainer added successfully!");
                     } else {
                         System.out.println("Failed to add trainer.");
@@ -149,15 +144,13 @@ public class Main {
 
                     if (rmChoice == 1) {
                         if (titanFit.removeMember(rmId)) {
-                            memberCount--;
                             System.out.println("Member removed.");
                         } else
                             System.out.println("Member not found.");
                     } else if (rmChoice == 2) {
-                        if (titanFit.removeTrainer(rmId)) {
-                            trainerCount--;
+                        if (titanFit.removeTrainer(rmId)){
                             System.out.println("Trainer removed.");
-                        }
+                            }
                         else
                             System.out.println("Trainer not found.");
                     }
