@@ -1,23 +1,24 @@
 public class Trainer extends Person implements Payable {
-private String specialization;
-private double monthelySalary;
+    private String specialization;
+    private double monthelySalary;
 
-Trainer(int id,String name,int age,String spec,double month){
-    super(id, name, age);
-    this.specialization=spec;
-    this.monthelySalary=month;
-}
+    public Trainer(int id, String name, int age, String spec, double month) {
+        super(id, name, age);
+        this.specialization = spec;
+        this.monthelySalary = month;
+    }
+
     @Override
-public double calculateFee(){
-    return monthelySalary;
-}
+    public double calculateFee() {
+        return monthelySalary;
+    }
 
     @Override
     public double makePayment() {
         return calculateFee();
     }
 
-    public String toString(){
-        return super.toString()+"Specialization in: "+specialization;
+    public String toString() {
+        return super.toString() + "Specialization in: " + specialization;
     }
 }
