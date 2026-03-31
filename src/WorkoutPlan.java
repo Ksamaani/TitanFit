@@ -1,7 +1,7 @@
 public class WorkoutPlan {
-    private final String planName;
-    private final int durationWeeks;
-    private final Exercise[] exercises;
+    private String planName;
+    private int durationWeeks;
+    private Exercise[] exercises;
     private int exerciseCount = 0;
     private int maxExercise; // not from UML. needed to create an array of "Exercise" of this size (see line 12)
 
