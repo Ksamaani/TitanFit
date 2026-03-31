@@ -1,7 +1,7 @@
 public class Gym {
-    private final String gymName;
-    private final Member[] members;
-    private final Trainer[] trainers;
+    private String gymName;
+    private Member[] members;
+    private Trainer[] trainers;
     private int TrainerCount = 0;
     private int membersCount = 0;
     private int maxTrainers;
