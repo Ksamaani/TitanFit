@@ -1,6 +1,6 @@
 public class PremiumMember extends Member {
-    private final boolean personalTrainer;
-    private final boolean spaAccess;
+    private boolean personalTrainer;
+    private boolean spaAccess;
     private WorkoutPlan customPlan;
 
     public PremiumMember(int id, String name, int age, int duration, boolean personalTrainer, boolean spaAccess) {
