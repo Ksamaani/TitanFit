@@ -1,6 +1,6 @@
 public abstract class Person {
 
-    private final int id;
+    private int id;
     private String name;
     private int age;
 
