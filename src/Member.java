@@ -1,7 +1,7 @@
 public class Member extends Person implements Payable {
 
-    private final int membershipDuration;
-    private final double baseFee;
+    private int membershipDuration;
+    private double baseFee;
 
     public Member(int id, String name, int age, int duration) {
         super(id, name, age);
