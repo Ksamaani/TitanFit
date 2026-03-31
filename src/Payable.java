@@ -1,4 +1,4 @@
 public interface Payable {
 
-    public abstract double makePayment();
+    double makePayment();
 }

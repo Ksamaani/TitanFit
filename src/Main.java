@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("==================================================");
@@ -148,10 +148,9 @@ public class Main {
                         } else
                             System.out.println("Member not found.");
                     } else if (rmChoice == 2) {
-                        if (titanFit.removeTrainer(rmId)){
+                        if (titanFit.removeTrainer(rmId)) {
                             System.out.println("Trainer removed.");
-                            }
-                        else
+                        } else
                             System.out.println("Trainer not found.");
                     }
                     break;
@@ -163,7 +162,7 @@ public class Main {
                     Member foundM = titanFit.searchMemberRecursive(searchMId, 0);
 
                     if (foundM != null) {
-                        System.out.println(foundM.toString());
+                        System.out.println(foundM);
                     } else {
                         System.out.println("Member not found.");
                     }
@@ -174,7 +173,7 @@ public class Main {
 
                     Trainer foundT = titanFit.searchTrainerRecursive(searchTId, 0);
                     if (foundT != null) {
-                        System.out.println(foundT.toString());
+                        System.out.println(foundT);
                     } else {
                         System.out.println("Trainer not found.");
                     }
@@ -192,12 +191,11 @@ public class Main {
 
                     Member planMember = titanFit.searchMemberRecursive(accessId, 0);
 
-                    if (planMember != null && planMember instanceof PremiumMember) {
-                        PremiumMember pm = (PremiumMember) planMember;
+                    if (planMember != null && planMember instanceof PremiumMember pm) {
                         WorkoutPlan currentPlan = pm.getWorkoutPlan();
 
                         if (currentPlan != null) {
-                            System.out.println("\n--- Managing Plan: " + currentPlan.toString() + " ---");
+                            System.out.println("\n--- Managing Plan: " + currentPlan + " ---");
                             System.out.println("1. Add Exercise | 2. Remove Exercise | 3. Search Exercise");
                             System.out.print("Choice: ");
                             int exChoice = scanner.nextInt();

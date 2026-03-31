@@ -1,10 +1,10 @@
 public abstract class Person {
 
-    private int id;
+    private final int id;
     private String name;
     private int age;
 
-    public Person(int id,String name,int age){
+    public Person(int id, String name, int age) {
         this.setName(name);
         this.id = id;
         this.setAge(age);
@@ -12,9 +12,10 @@ public abstract class Person {
 
     public abstract double calculateFee();
 
-    public String toString(){
-        return "Name: "+name+", Id: "+id+", Age: "+age+" ,";
+    public String toString() {
+        return "Name: " + name + ", Id: " + id + ", Age: " + age + " ,";
     }
+
     public int getId() {
         return id;
     }

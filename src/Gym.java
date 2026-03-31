@@ -1,7 +1,7 @@
 public class Gym {
-    private String gymName;
-    private Member[] members;
-    private Trainer[] trainers;
+    private final String gymName;
+    private final Member[] members;
+    private final Trainer[] trainers;
     private int TrainerCount = 0;
     private int membersCount = 0;
     private int maxTrainers;
@@ -113,11 +113,11 @@ public class Gym {
 
     }
 
-    public int getTrainerCount(){
+    public int getTrainerCount() {
         return TrainerCount;
     }
 
-    public int getMembersCount(){
+    public int getMembersCount() {
         return membersCount;
     }
 }

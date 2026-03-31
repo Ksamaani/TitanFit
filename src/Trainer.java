@@ -1,6 +1,6 @@
 public class Trainer extends Person implements Payable {
-    private String specialization;
-    private double monthelySalary;
+    private final String specialization;
+    private final double monthelySalary;
 
     public Trainer(int id, String name, int age, String spec, double month) {
         super(id, name, age);
