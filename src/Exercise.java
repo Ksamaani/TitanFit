@@ -1,7 +1,7 @@
 public class Exercise {
-    private final String name;
-    private final int sets;
-    private final int repetitions;
+    private String name;
+    private int sets;
+    private int repetitions;
 
     public Exercise(String name, int sets, int repititions) {
         this.name = name;
