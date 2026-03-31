@@ -7,7 +7,7 @@ public class Gym {
     private int maxTrainers;
     private int maxMembers;
 
-    Gym(String name, int maxTrainers, int maxMembers) {
+    public Gym(String name, int maxTrainers, int maxMembers) {
         this.gymName = name;
         members = new Member[maxMembers];
         trainers = new Trainer[maxTrainers];
