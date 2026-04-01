@@ -3,10 +3,10 @@ public class Trainer extends Person implements Payable {
     private String specialization;
     private double monthelySalary;
 
-    public Trainer(int id, String name, int age, String spec, double month) {
+    public Trainer(int id, String name, int age, String specialization, double monthelySalary) {
         super(id, name, age);
-        this.specialization = spec;
-        this.monthelySalary = month;
+        this.specialization = specialization;
+        this.monthelySalary = monthelySalary;
     }
 
     @Override
