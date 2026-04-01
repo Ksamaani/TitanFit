@@ -5,9 +5,8 @@ public class Gym {
     private Trainer[] trainers;
     private int TrainerCount = 0;
     private int membersCount = 0;
-    private int maxTrainers;
-    private int maxMembers;
 
+    
     public Gym(String name, int maxTrainers, int maxMembers) {
         this.gymName = name;
         members = new Member[maxMembers];
@@ -41,15 +40,7 @@ public class Gym {
         return false;
     }
 
-    public Member searchMember(int id) {
-        for (int i = 0; i < membersCount; i++) {
-            if (members[i].getId() == id) {
-                return members[i];
-            }
-        }
-        return null;
-    }
-
+    
     // Recursive search in members array by ID
     public Member searchMemberRecursive(int Id, int index) {
         if (index == membersCount) {
