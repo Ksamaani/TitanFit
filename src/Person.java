@@ -1,3 +1,5 @@
+// Abstract class for all the people in the gym
+
 public abstract class Person {
 
     private int id;
@@ -10,6 +12,7 @@ public abstract class Person {
         this.setAge(age);
     }
 
+    // Abstract method making subclasses calculate their fee
     public abstract double calculateFee();
 
     public String toString() {

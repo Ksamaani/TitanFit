@@ -1,3 +1,4 @@
+// A collection of exercises
 public class WorkoutPlan {
     private String planName;
     private int durationWeeks;
@@ -43,6 +44,7 @@ public class WorkoutPlan {
         return null;
     }
 
+    // Recursive search in exercises array by name
     public Exercise searchExerciseRecursive(String name, int index) {
         if (index == exerciseCount) {
             return null;

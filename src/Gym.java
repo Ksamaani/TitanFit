@@ -1,3 +1,4 @@
+// The class that manages all members and trainers
 public class Gym {
     private String gymName;
     private Member[] members;
@@ -49,6 +50,7 @@ public class Gym {
         return null;
     }
 
+    // Recursive search in members array by ID
     public Member searchMemberRecursive(int Id, int index) {
         if (index == membersCount) {
             return null;

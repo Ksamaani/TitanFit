@@ -1,3 +1,4 @@
+// A gym trainer class
 public class Trainer extends Person implements Payable {
     private String specialization;
     private double monthelySalary;

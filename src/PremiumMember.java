@@ -1,3 +1,4 @@
+// A premium member with a personal trainer and spa access option
 public class PremiumMember extends Member {
     private boolean personalTrainer;
     private boolean spaAccess;

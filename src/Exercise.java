@@ -1,3 +1,4 @@
+// A single exercise with sets and repetitions
 public class Exercise {
     private String name;
     private int sets;

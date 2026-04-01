@@ -1,3 +1,4 @@
+// A normal gym member
 public class Member extends Person implements Payable {
 
     private int membershipDuration;
