@@ -1,4 +1,5 @@
+// An interface for classes that process payments
 public interface Payable {
 
-    public abstract double makePayment();
+    double makePayment();
 }

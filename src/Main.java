@@ -1,5 +1,6 @@
 import java.util.Scanner;
-public class Main { 
+public class Main
+ { 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         
@@ -36,19 +37,9 @@ public class Main {
 
             switch (choice) {
                 case 1:
-                    int mId;
-
-                    while (true) {
-                        System.out.print("Enter Member ID: ");
-                        mId = scanner.nextInt();
-                        scanner.nextLine();
-
-                        if (titanFit.searchMemberRecursive(mId, 0) == null) {
-                            break;
-                        }
-                        System.out.println("ERROR: ID is used, try again.");
-                    }
-
+                    System.out.print("Enter Member ID: ");
+                    int mId = scanner.nextInt();
+                    scanner.nextLine();
                     System.out.print("Enter Name: ");
                     String mName = scanner.nextLine();
                     System.out.print("Enter Age: ");
@@ -93,19 +84,9 @@ public class Main {
                     break;
 
                 case 2:
-                    int tId;
-
-                    while (true) {
-                        System.out.print("Enter Trainer ID: ");
-                        tId = scanner.nextInt();
-                        scanner.nextLine();
-
-                        if (titanFit.searchTrainerRecursive(tId, 0) == null) {
-                            break;
-                        }
-                        System.out.println("ERROR: ID is used, try again.");
-                    }
-
+                    System.out.print("Enter Trainer ID: ");
+                    int tId = scanner.nextInt();
+                    scanner.nextLine();
                     System.out.print("Enter Name: ");
                     String tName = scanner.nextLine();
                     System.out.print("Enter Age: ");
