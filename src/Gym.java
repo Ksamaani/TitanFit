@@ -85,14 +85,14 @@ public boolean removeTrainer(int id){
     return false;
 }
 
-public Trainer searchTrainerRecursivea(int id, int index){
+public Trainer searchTrainerRecursive(int id, int index){
         if (index == TrainerCount){
             return null;
         }
         else if (trainers[index].getId() == id) {
             return trainers[index];
         }
-        return searchTrainerRecursivea(id, index+1);
+        return searchTrainerRecursive(id, index+1);
 }
  
 public void displayMembers(){
