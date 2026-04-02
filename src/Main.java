@@ -37,8 +37,24 @@ public class Main
 
             switch (choice) {
                 case 1:
-                    System.out.print("Enter Member ID: ");
-                    int mId = scanner.nextInt();
+
+                    if (titanFit.getMembersCount() == maxMembers) {
+                        System.out.println("ERROR: Reached maximum amount of members");
+                        break;
+                    }
+
+                    int mId;
+
+                    while (true) {
+                        System.out.print("Enter Member ID: ");
+                        mId = scanner.nextInt();
+
+                        if (titanFit.searchMemberRecursive(mId, 0) == null) {
+                            break;
+                        }
+                        System.out.println("ERROR: ID is used, try again.");
+                    }
+
                     scanner.nextLine();
                     System.out.print("Enter Name: ");
                     String mName = scanner.nextLine();
@@ -84,8 +100,24 @@ public class Main
                     break;
 
                 case 2:
-                    System.out.print("Enter Trainer ID: ");
-                    int tId = scanner.nextInt();
+
+                    if (titanFit.getTrainerCount() == maxTrainers) {
+                        System.out.println("ERROR: Reached maximum amount of trainers");
+                        break;
+                    }
+
+                    int tId;
+
+                    while (true) {
+                        System.out.print("Enter Trainer ID: ");
+                        tId = scanner.nextInt();
+
+                        if (titanFit.searchTrainerRecursive(tId, 0) == null) {
+                            break;
+                        }
+                        System.out.println("ERROR: ID is used, try again.");
+                    }
+
                     scanner.nextLine();
                     System.out.print("Enter Name: ");
                     String tName = scanner.nextLine();
@@ -134,7 +166,7 @@ public class Main
                         System.out.println(foundM.toString());
                     } else {
                             System.out.println("Member not found.");
-                            }
+                    }
                     break;
                 case 5:
                     System.out.print("Enter Trainer ID to search: ");
