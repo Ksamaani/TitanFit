@@ -1,4 +1,5 @@
-// Abstract class for all the people in the gym
+// Abstract class for all the people in the gym.
+// Blueprint for Member and Trainer.
 
 public abstract class Person {
 
@@ -6,19 +7,21 @@ public abstract class Person {
     private String name;
     private int age;
 
+    // Constructor for initializing The values.
     public Person(int id, String name, int age) {
         this.setName(name);
         this.id = id;
         this.setAge(age);
     }
 
-    // Abstract method making subclasses calculate their fee
+    // Abstract method making subclasses calculate their fee.
     public abstract double calculateFee();
 
     public String toString() {
         return "Name: " + name + ", Id: " + id + ", Age: " + age + " ,";
     }
 
+    // Getters and Setters.
     public int getId() {
         return id;
     }

@@ -2,65 +2,87 @@
 public class WorkoutPlan {
     private String planName;
     private int durationWeeks;
-    private Exercise[] exercises;
-    private int exerciseCount = 0;
+    private int maxExercises;
+    private int currentExerciseCount;
+    private List<Exercise> exercisesList;
 
+    //constructor
     public WorkoutPlan(String name, int durationWeeks, int maxExercise) {
         this.planName = name;
         this.durationWeeks = durationWeeks;
-        exercises = new Exercise[maxExercise];
+        this.currentExerciseCount =0;
+        this.exercisesList = new List<Exercise>("Exercises");
     }
 
     public boolean addExercise(Exercise e) {
-        if (exerciseCount == exercises.length) {
+        if (currentExerciseCount >= maxExercises) {
             return false;
         }
-        exercises[exerciseCount] = e;
-        exerciseCount++;
+        exercisesList.insertAtBack(e);
+        currentExerciseCount++;
         return true;
     }
 
     public boolean removeExercise(String name) {
-        for (int i = 0; i < exerciseCount; i++) {
-            if (exercises[i].getName().equals(name)) {
-                for (int j = i; j < exerciseCount - 1; j++) {
-                    exercises[j] = exercises[j + 1];
+        Node<Exercise> current = exercisesList.getFirstNode();
+        Node<Exercise> previous = null;
+
+        while (current != null) {
+
+            if (current.data.getName().equals(name)) {
+                if (previous == null) {
+                    exercisesList.removeFromFront();
+                } else if (current.nextNode == null) {
+                    exercisesList.removeFromBack();
+                } else {
+                    previous.nextNode = current.nextNode;
                 }
-                exerciseCount--;
-                exercises[exerciseCount] = null;
+                currentExerciseCount--;
                 return true;
             }
+            previous = current;
+            current = current.nextNode;
         }
         return false;
     }
 
     public Exercise searchExercise(String name) {
-        for (int i = 0; i < exerciseCount; i++) {
-            if (exercises[i].getName().equals(name)) {
-                return exercises[i];
+        Node<Exercise> current = exercisesList.getFirstNode();
+        while (current != null) {
+            if (current.data.getName().equals(name)) {
+                return current.data;
             }
+            current = current.nextNode;
         }
         return null;
     }
 
-    // Recursive search in exercises array by name
+    // Recursive search in List array by name
     public Exercise searchExerciseRecursive(String name, int index) {
-        if (index == exerciseCount) {
+        return searchExerciseHelper(exercisesList.getFirstNode(), name);
+    }
+    private Exercise searchExerciseHelper(Node<Exercise> current, String name) {
+        if (current == null) {
             return null;
-        } else if (exercises[index].getName().equals(name)) {
-            return exercises[index];
         }
-
-        return searchExerciseRecursive(name, index + 1);
+        if (current.data.getName().equals(name)) {
+            return current.data;
+        }
+        return searchExerciseHelper(current.nextNode, name);
     }
 
     public String toString() {
         String temp = "";
+        Node<Exercise> current = exercisesList.getFirstNode();
+        int index = 1;
 
-        for (int i = 0; i < exerciseCount; i++) {
-            temp += "\n" + (i + 1) + ") " + exercises[i];
+        while (current != null) {
+            temp += "\n" + index + ") " + current.data.toString();
+            current = current.nextNode;
+            index++;
         }
 
-        return "Plan name: " + planName + ", duration in weeks: " + durationWeeks + ", exercise count: " + exerciseCount + "\nExercises Info: " + temp;
+        return "Plan name: " + planName + ", duration in weeks: " + durationWeeks +
+                ", exercise count: " + currentExerciseCount + "\nExercises Info: " + temp;
     }
 }

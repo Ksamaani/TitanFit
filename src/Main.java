@@ -38,7 +38,7 @@ public class Main
             switch (choice) {
                 case 1:
 
-                    if (titanFit.getMembersCount() == maxMembers) {
+                    if (titanFit.getCurrentMembersCount() == maxMembers) {
                         System.out.println("ERROR: Reached maximum amount of members");
                         break;
                     }
@@ -49,7 +49,7 @@ public class Main
                         System.out.print("Enter Member ID: ");
                         mId = scanner.nextInt();
 
-                        if (titanFit.searchMemberRecursive(mId, 0) == null) {
+                        if (titanFit.searchMemberRecursive(mId) == null) {
                             break;
                         }
                         System.out.println("ERROR: ID is used, try again.");
@@ -101,7 +101,7 @@ public class Main
 
                 case 2:
 
-                    if (titanFit.getTrainerCount() == maxTrainers) {
+                    if (titanFit.getCurrentTrainerCount() == maxTrainers) {
                         System.out.println("ERROR: Reached maximum amount of trainers");
                         break;
                     }
@@ -112,7 +112,7 @@ public class Main
                         System.out.print("Enter Trainer ID: ");
                         tId = scanner.nextInt();
 
-                        if (titanFit.searchTrainerRecursive(tId, 0) == null) {
+                        if (titanFit.searchTrainerRecursive(tId) == null) {
                             break;
                         }
                         System.out.println("ERROR: ID is used, try again.");
@@ -160,7 +160,7 @@ public class Main
                     System.out.print("Enter Member ID to search: ");
                     int searchMId = scanner.nextInt();
 
-                    Member foundM = titanFit.searchMemberRecursive(searchMId, 0);
+                    Member foundM = titanFit.searchMemberRecursive(searchMId);
 
                     if (foundM != null) {
                         System.out.println(foundM.toString());
@@ -172,7 +172,7 @@ public class Main
                     System.out.print("Enter Trainer ID to search: ");
                     int searchTId = scanner.nextInt();
                     
-                    Trainer foundT = titanFit.searchTrainerRecursive(searchTId, 0);
+                    Trainer foundT = titanFit.searchTrainerRecursive(searchTId);
                     if (foundT != null) {
                         System.out.println(foundT.toString());
                     } else {
@@ -190,7 +190,7 @@ public class Main
                     int accessId = scanner.nextInt();
                     scanner.nextLine();
                     
-                    Member planMember = titanFit.searchMemberRecursive(accessId, 0);
+                    Member planMember = titanFit.searchMemberRecursive(accessId);
                     
                     if (planMember != null && planMember instanceof PremiumMember) {
                         PremiumMember pm = (PremiumMember) planMember;
@@ -242,9 +242,9 @@ public class Main
                     System.out.print("Enter ID of Person to process payment: ");
                     int payId = scanner.nextInt();
                     
-                    Person p = titanFit.searchMemberRecursive(payId, 0);
+                    Person p = titanFit.searchMemberRecursive(payId);
                     if (p == null) {
-                        p = titanFit.searchTrainerRecursive(payId, 0);
+                        p = titanFit.searchTrainerRecursive(payId);
                     }
                     
                     if (p != null) {

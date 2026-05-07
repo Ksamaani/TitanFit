@@ -1,9 +1,11 @@
-// A normal gym member
+// A standard gym member
 public class Member extends Person implements Payable {
 
+    // unique attributes to a standard member.
     private int membershipDuration;
     private double baseFee;
 
+    // Constructor for initializing The values.
     public Member(int id, String name, int age, int duration) {
         super(id, name, age);
         this.membershipDuration = duration;

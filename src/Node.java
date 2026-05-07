@@ -1,0 +1,21 @@
+public class Node<T> {
+    public T data;
+    public Node<T> nextNode;
+
+    public Node(T object) {
+        this(object, null);
+    }
+
+    public Node(T object, Node<T> node) {
+        data = object;
+        nextNode = node;
+    }
+
+    public T getData() {
+        return data;
+    }
+
+    public Node<T> getNext() {
+        return nextNode;
+    }
+}
