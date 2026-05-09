@@ -143,4 +143,7 @@ public class Gym {
     public int getCurrentMembersCount() {
         return currentMembersCount;
     }
+
+    public List<Member>  getMembersList()  { return membersList; }
+    public List<Trainer> getTrainersList() { return trainersList; }
 }
