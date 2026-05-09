@@ -51,7 +51,7 @@ public class TitanFitGUI extends JFrame {
             toFront();
         }
     }
-    
+
     public static void main(String[] args) {
         new TitanFitGUI();
     }
@@ -321,7 +321,7 @@ public class TitanFitGUI extends JFrame {
         if (name.isEmpty()) { showError("Name cannot be empty."); return; }
         if (gym.searchTrainerRecursive(id) != null) { showError("ID " + id + " is already in use."); return; }
 
-        
+
         try {
             Trainer t = new Trainer(id, name, (int) spAge.getValue(),
                     tfSpec.getText().trim(), (double)(int) spSalary.getValue());
