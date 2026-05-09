@@ -42,7 +42,7 @@ public abstract class Person implements Serializable {
 
     public void setAge(int age) {
         if (age <= 0 || age >= 120)
-            throw new InvalidAgeException("Invalid age: " + age);
+            throw new InvalidInputException("Invalid age: " + age + ". Age must be between 1 and 119.");
         this.age = age;
     }
 }

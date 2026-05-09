@@ -7,6 +7,8 @@ public class Trainer extends Person implements Payable, Serializable {
 
     public Trainer(int id, String name, int age, String specialization, double monthelySalary) {
         super(id, name, age);
+        if (specialization == null || specialization.trim().isEmpty())
+            throw new InvalidInputException("Specialization cannot be empty.");
         this.specialization = specialization;
         this.monthelySalary = monthelySalary;
     }

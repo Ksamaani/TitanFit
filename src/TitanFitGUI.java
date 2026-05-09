@@ -290,7 +290,7 @@ public class TitanFitGUI extends JFrame {
                 showError("Failed to add member.");
             }
 
-        } catch (InvalidAgeException | IllegalArgumentException ex) {
+        } catch (InvalidInputException | IllegalArgumentException ex) {
             showError("Error adding member: " + ex.getMessage());
         }
     }
@@ -337,7 +337,7 @@ public class TitanFitGUI extends JFrame {
             } else {
                 showError("Failed to add trainer.");
             }
-        } catch (InvalidAgeException ex) {
+        } catch (InvalidInputException ex) {
             showError("Error adding trainer: " + ex.getMessage());
         }
     }

@@ -137,7 +137,7 @@ public class Main
                             System.out.println("Failed to add member.");
                         break;
                     }
-                    catch (InvalidAgeException | IllegalArgumentException e){
+                    catch (InvalidInputException | IllegalArgumentException e){
                         System.out.println("Error: " + e.getMessage());
                         System.out.println("Member was not added. Try again.");
                         break;
@@ -182,7 +182,7 @@ public class Main
                         }
                         break;
                     }
-                    catch (InvalidAgeException e){
+                    catch (InvalidInputException e){
                         System.out.println("Error: " + e.getMessage());
                         break;
                     }
