@@ -1,7 +1,9 @@
 // Abstract class for all the people in the gym.
 // Blueprint for Member and Trainer.
 
-public abstract class Person {
+import java.io.Serializable;
+
+public abstract class Person implements Serializable {
 
     private int id;
     private String name;
@@ -39,6 +41,8 @@ public abstract class Person {
     }
 
     public void setAge(int age) {
+        if (age <= 0 || age >= 120)
+            throw new InvalidAgeException("Invalid age: " + age);
         this.age = age;
     }
 }

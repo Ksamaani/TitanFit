@@ -1,5 +1,7 @@
+import java.io.Serializable;
+
 // A gym trainer class
-public class Trainer extends Person implements Payable {
+public class Trainer extends Person implements Payable, Serializable {
     private String specialization;
     private double monthelySalary;
 

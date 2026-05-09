@@ -1,5 +1,7 @@
+import java.io.Serializable;
+
 // The class that manages all members and trainers
-public class Gym {
+public class Gym implements Serializable {
     private String gymName;
     private List<Member> membersList;
     private List<Trainer> trainersList;
@@ -143,4 +145,16 @@ public class Gym {
     public int getCurrentMembersCount() {
         return currentMembersCount;
     }
+
+    public String getGymName(){
+        return gymName;
+    }
+
+    public int getMaxMembers() { return maxMembers; }
+
+    public int getMaxTrainers() { return maxTrainers; }
+
+
+    public List<Member>  getMembersList()  { return membersList; }
+    public List<Trainer> getTrainersList() { return trainersList; }
 }

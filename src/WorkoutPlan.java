@@ -1,5 +1,7 @@
+import java.io.Serializable;
+
 // A collection of exercises
-public class WorkoutPlan {
+public class WorkoutPlan implements Serializable {
     private String planName;
     private int durationWeeks;
     private int maxExercises;
@@ -12,6 +14,7 @@ public class WorkoutPlan {
         this.durationWeeks = durationWeeks;
         this.currentExerciseCount =0;
         this.exercisesList = new List<Exercise>("Exercises");
+        this.maxExercises=maxExercise;
     }
 
     public boolean addExercise(Exercise e) {
@@ -85,4 +88,6 @@ public class WorkoutPlan {
         return "Plan name: " + planName + ", duration in weeks: " + durationWeeks +
                 ", exercise count: " + currentExerciseCount + "\nExercises Info: " + temp;
     }
+
+    public String getPlanName() { return planName; }
 }

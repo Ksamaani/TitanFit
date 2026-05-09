@@ -1,6 +1,8 @@
 // A premium member with a personal trainer and spa access option
 
-public class PremiumMember extends Member {
+import java.io.Serializable;
+
+public class PremiumMember extends Member implements Serializable {
 
     private boolean personalTrainer;
     private boolean spaAccess;

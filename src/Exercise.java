@@ -1,5 +1,7 @@
+import java.io.Serializable;
+
 // A single exercise with sets and repetitions
-public class Exercise {
+public class Exercise implements Serializable {
     private String name;
     private int sets;
     private int repetitions;

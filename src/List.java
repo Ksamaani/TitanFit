@@ -1,4 +1,6 @@
-public class List<V> {
+import java.io.Serializable;
+
+public class List<V> implements Serializable {
     private Node<V> firstNode;
     private Node<V> lastNode;
     private String name;
