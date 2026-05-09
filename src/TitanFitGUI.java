@@ -12,7 +12,6 @@ public class TitanFitGUI extends JFrame {
     private JLabel                        statusLabel;
     private ResultFrame                   resultFrame;
 
-    // ── Node wrapper: clean label separate from domain object ──────────────
     static class NodeWrapper {
         final String label;
         final Object data;
@@ -20,7 +19,6 @@ public class TitanFitGUI extends JFrame {
         @Override public String toString() { return label; }
     }
 
-    // ── Second JFrame: displays all results ────────────────────────────────
     static class ResultFrame extends JFrame {
         private final JTextArea textArea;
 
@@ -53,17 +51,15 @@ public class TitanFitGUI extends JFrame {
             toFront();
         }
     }
-
-    // ── Entry point ────────────────────────────────────────────────────────
+    
     public static void main(String[] args) {
         new TitanFitGUI();
     }
 
-    // ── Constructor: ask load or create, then build window ─────────────────
+    // ask load or create, then build window
     public TitanFitGUI() {
         super("TitanFit Management System");
 
-        // --- CHANGE: ask user to load or create new gym ---
         int loadChoice = JOptionPane.showConfirmDialog(null,
                 "Load previous gym data?", "TitanFit — Startup",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
@@ -109,7 +105,7 @@ public class TitanFitGUI extends JFrame {
         setVisible(true);
     }
 
-    // ── Build the main window ──────────────────────────────────────────────
+    // Build the main window
     private void buildUI(String gymName) {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(700, 560);
@@ -168,7 +164,7 @@ public class TitanFitGUI extends JFrame {
         rebuildList();
     }
 
-    // ── Helpers ────────────────────────────────────────────────────────────
+    // Helpers
 
     private JButton makeBtn(String text, ActionListener al) {
         JButton b = new JButton(text);
@@ -220,7 +216,7 @@ public class TitanFitGUI extends JFrame {
         JOptionPane.showMessageDialog(this, msg, "Error", JOptionPane.ERROR_MESSAGE);
     }
 
-    // ── Action: Add Member ─────────────────────────────────────────────────
+    // Add Member
     private void doAddMember() {
         if (gym.getCurrentMembersCount() >= maxMembers) {
             showError("Maximum member capacity reached (" + maxMembers + ")."); return;
@@ -268,8 +264,7 @@ public class TitanFitGUI extends JFrame {
         if (name.isEmpty()) { showError("Name cannot be empty."); return; }
         if (gym.searchMemberRecursive(id) != null) { showError("ID " + id + " is already in use."); return; }
 
-        // --- CHANGE: wrapped in try/catch for InvalidAgeException and IllegalArgumentException ---
-        // InvalidAgeException is thrown in Person.setAge() and propagates here
+        // try/catch for InvalidInputException and IllegalArgumentException
         // IllegalArgumentException is thrown in Member constructor when duration <= 0
         try {
             Member m;
@@ -295,7 +290,7 @@ public class TitanFitGUI extends JFrame {
         }
     }
 
-    // ── Action: Add Trainer ────────────────────────────────────────────────
+    // Add Trainer
     private void doAddTrainer() {
         if (gym.getCurrentTrainerCount() >= maxTrainers) {
             showError("Maximum trainer capacity reached (" + maxTrainers + ")."); return;
@@ -326,8 +321,7 @@ public class TitanFitGUI extends JFrame {
         if (name.isEmpty()) { showError("Name cannot be empty."); return; }
         if (gym.searchTrainerRecursive(id) != null) { showError("ID " + id + " is already in use."); return; }
 
-        // --- CHANGE: wrapped in try/catch for InvalidAgeException ---
-        // InvalidAgeException thrown in Person.setAge() propagates here
+        
         try {
             Trainer t = new Trainer(id, name, (int) spAge.getValue(),
                     tfSpec.getText().trim(), (double)(int) spSalary.getValue());
@@ -342,7 +336,7 @@ public class TitanFitGUI extends JFrame {
         }
     }
 
-    // ── Action: Remove ─────────────────────────────────────────────────────
+    // Remove
     private void doRemove() {
         String[] opts = {"Member", "Trainer", "Cancel"};
         int type = JOptionPane.showOptionDialog(this, "Remove a Member or Trainer?", "Remove",
@@ -365,7 +359,7 @@ public class TitanFitGUI extends JFrame {
         }
     }
 
-    // ── Action: Search Member ──────────────────────────────────────────────
+    // Search Member
     private void doSearchMember() {
         String input = JOptionPane.showInputDialog(this, "Enter Member ID to search:");
         if (input == null || input.trim().isEmpty()) return;
@@ -388,7 +382,7 @@ public class TitanFitGUI extends JFrame {
         }
     }
 
-    // ── Action: Search Trainer ─────────────────────────────────────────────
+    // Search Trainer
     private void doSearchTrainer() {
         String input = JOptionPane.showInputDialog(this, "Enter Trainer ID to search:");
         if (input == null || input.trim().isEmpty()) return;
