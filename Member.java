@@ -29,6 +29,6 @@ public class Member extends Person implements Payable, Serializable {
 
     @Override
     public String toString() {
-        return super.toString() + "Membership Duration: " + this.membershipDuration + " months";
+        return super.toString() + "Membership Duration: " + this.membershipDuration + "months ";
     }
 }

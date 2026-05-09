@@ -12,9 +12,9 @@ public class WorkoutPlan implements Serializable {
     public WorkoutPlan(String name, int durationWeeks, int maxExercise) {
         this.planName = name;
         this.durationWeeks = durationWeeks;
-        this.maxExercises = maxExercise;
         this.currentExerciseCount =0;
         this.exercisesList = new List<Exercise>("Exercises");
+        this.maxExercises=maxExercise;
     }
 
     public boolean addExercise(Exercise e) {
@@ -88,4 +88,6 @@ public class WorkoutPlan implements Serializable {
         return "Plan name: " + planName + ", duration in weeks: " + durationWeeks +
                 ", exercise count: " + currentExerciseCount + "\nExercises Info: " + temp;
     }
+
+    public String getPlanName() { return planName; }
 }

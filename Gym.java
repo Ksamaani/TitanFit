@@ -153,4 +153,8 @@ public class Gym implements Serializable {
     public int getMaxMembers() { return maxMembers; }
 
     public int getMaxTrainers() { return maxTrainers; }
+
+
+    public List<Member>  getMembersList()  { return membersList; }
+    public List<Trainer> getTrainersList() { return trainersList; }
 }
