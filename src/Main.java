@@ -3,19 +3,42 @@ public class Main
  { 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        Gym titanFit = null;
+        String gymName;
+        int maxTrainers = 0;
+        int maxMembers = 0;
         
         System.out.println("==================================================");
         System.out.println("          Welcome to TitanFit Management          ");
         System.out.println("==================================================");
-        
-        System.out.print("Enter Gym Name: ");
-        String gymName = scanner.nextLine();
-        System.out.print("Enter Maximum Number of Trainers: ");
-        int maxTrainers = scanner.nextInt();
-        System.out.print("Enter Maximum Number of Members: ");
-        int maxMembers = scanner.nextInt();
-        
-        Gym titanFit = new Gym(gymName, maxTrainers, maxMembers); 
+
+        System.out.print("Load previous gym data? (1 for Yes, 0 for No): ");
+        int loadChoice = scanner.nextInt();
+        scanner.nextLine();
+
+        if (loadChoice == 1){
+            titanFit = GymFileManager.loadGym();
+            if (titanFit == null){
+                System.out.println("No saved data found. Create a new gym.");
+                loadChoice = 2;
+            }
+        } else {
+            loadChoice = 2;
+        }
+
+        if (loadChoice == 2) {
+            System.out.print("Enter Gym Name: ");
+            gymName = scanner.nextLine();
+            System.out.print("Enter Maximum Number of Trainers: ");
+            maxTrainers = scanner.nextInt();
+            System.out.print("Enter Maximum Number of Members: ");
+            maxMembers = scanner.nextInt();
+
+            titanFit = new Gym(gymName, maxTrainers, maxMembers);
+        }
+
+        maxMembers = titanFit.getMaxMembers();
+        maxTrainers = titanFit.getMaxTrainers();
 
         int choice;
 
@@ -29,6 +52,7 @@ public class Main
             System.out.println("6. Display All Members & Trainers");
             System.out.println("7. Workout Plan Management (Premium Members Only)");
             System.out.println("8. Process Payments");
+            System.out.println("9. Save Gym Data");
             System.out.println("0. Exit");
             System.out.print("Please enter your choice: ");
             
@@ -56,48 +80,68 @@ public class Main
                     }
 
                     scanner.nextLine();
+
                     System.out.print("Enter Name: ");
                     String mName = scanner.nextLine();
+
                     System.out.print("Enter Age: ");
                     int mAge = scanner.nextInt();
+                    scanner.nextLine();
+
                     System.out.print("Enter Duration (months): ");
                     int mDuration = scanner.nextInt();
+                    scanner.nextLine();
                     
                     System.out.print("Is this a Premium Member? (1 for Yes, 0 for No): ");
                     int isPremium = scanner.nextInt();
                     scanner.nextLine();
-                    
-                    boolean mAdded;
-                    if (isPremium == 1) {
-                        System.out.print("Include Personal Trainer? (1 for Yes, 0 for No): ");
-                        boolean hasTrainer = (scanner.nextInt() == 1);
-                        System.out.print("Include Spa Access? (1 for Yes, 0 for No): ");
-                        boolean hasSpa = (scanner.nextInt() == 1);
-                        scanner.nextLine(); 
-                        PremiumMember newPremium = new PremiumMember(mId, mName, mAge, mDuration, hasTrainer, hasSpa);
-                        
-                        System.out.println("\n--- Create Premium Workout Plan ---");
-                        System.out.print("Enter Plan Name: ");
-                        String pName = scanner.nextLine();
-                        System.out.print("Enter Plan Duration (weeks): ");
-                        int pDuration = scanner.nextInt();
-                        System.out.print("Enter Maximum Exercises for this plan: ");
-                        int pMaxEx = scanner.nextInt();
-                        
-                        WorkoutPlan personalPlan = new WorkoutPlan(pName, pDuration, pMaxEx);
-                        newPremium.setWorkoutPlan(personalPlan);
-                        
-                        mAdded = titanFit.addMember(newPremium);
-                    } else {
-                        Member newMember = new Member(mId, mName, mAge, mDuration);
-                        mAdded = titanFit.addMember(newMember);
+
+                    try {
+                        boolean mAdded;
+
+                        if (isPremium == 1) {
+                            System.out.print("Include Personal Trainer? (1 for Yes, 0 for No): ");
+                            boolean hasTrainer = (scanner.nextInt() == 1);
+                            scanner.nextLine();
+
+                            System.out.print("Include Spa Access? (1 for Yes, 0 for No): ");
+                            boolean hasSpa = (scanner.nextInt() == 1);
+                            scanner.nextLine();
+
+                            PremiumMember newPremium = new PremiumMember(mId, mName, mAge, mDuration, hasTrainer, hasSpa);
+
+                            System.out.println("\n--- Create Premium Workout Plan ---");
+                            System.out.print("Enter Plan Name: ");
+                            String pName = scanner.nextLine();
+
+                            System.out.print("Enter Plan Duration (weeks): ");
+                            int pDuration = scanner.nextInt();
+                            scanner.nextLine();
+
+                            System.out.print("Enter Maximum Exercises for this plan: ");
+                            int pMaxEx = scanner.nextInt();
+                            scanner.nextLine();
+
+                            WorkoutPlan personalPlan = new WorkoutPlan(pName, pDuration, pMaxEx);
+                            newPremium.setWorkoutPlan(personalPlan);
+
+                            mAdded = titanFit.addMember(newPremium);
+                        } else {
+                            Member newMember = new Member(mId, mName, mAge, mDuration);
+                            mAdded = titanFit.addMember(newMember);
+                        }
+
+                        if (mAdded)
+                            System.out.println("Member added successfully!");
+                        else
+                            System.out.println("Failed to add member.");
+                        break;
                     }
-                    
-                    if(mAdded) 
-                        System.out.println("Member added successfully!");
-                    else 
-                        System.out.println("Failed to add member.");
-                    break;
+                    catch (InvalidAgeException | IllegalArgumentException e){
+                        System.out.println("Error: " + e.getMessage());
+                        System.out.println("Member was not added. Try again.");
+                        break;
+                    }
 
                 case 2:
 
@@ -118,24 +162,30 @@ public class Main
                         System.out.println("ERROR: ID is used, try again.");
                     }
 
-                    scanner.nextLine();
-                    System.out.print("Enter Name: ");
-                    String tName = scanner.nextLine();
-                    System.out.print("Enter Age: ");
-                    int tAge = scanner.nextInt();
-                    scanner.nextLine();
-                    System.out.print("Enter Specialization: ");
-                    String tSpec = scanner.nextLine();
-                    System.out.print("Enter Monthly Salary: ");
-                    double tSalary = scanner.nextDouble();
-                    
-                    Trainer newTrainer = new Trainer(tId, tName, tAge, tSpec, tSalary);
-                    if (titanFit.addTrainer(newTrainer)) {
-                        System.out.println("Trainer added successfully!");
-                    } else {
-                        System.out.println("Failed to add trainer.");
+                    try {
+                        scanner.nextLine();
+                        System.out.print("Enter Name: ");
+                        String tName = scanner.nextLine();
+                        System.out.print("Enter Age: ");
+                        int tAge = scanner.nextInt();
+                        scanner.nextLine();
+                        System.out.print("Enter Specialization: ");
+                        String tSpec = scanner.nextLine();
+                        System.out.print("Enter Monthly Salary: ");
+                        double tSalary = scanner.nextDouble();
+
+                        Trainer newTrainer = new Trainer(tId, tName, tAge, tSpec, tSalary);
+                        if (titanFit.addTrainer(newTrainer)) {
+                            System.out.println("Trainer added successfully!");
+                        } else {
+                            System.out.println("Failed to add trainer.");
+                        }
+                        break;
                     }
-                    break;
+                    catch (InvalidAgeException e){
+                        System.out.println("Error: " + e.getMessage());
+                        break;
+                    }
 
                 case 3:
                     System.out.print("Remove (1) Member or (2) Trainer? ");
@@ -255,6 +305,10 @@ public class Main
                     } else {
                         System.out.println("ID not found.");
                     }
+                    break;
+
+                case 9:
+                    GymFileManager.saveGym(titanFit);
                     break;
 
                 case 0:
